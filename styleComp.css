@@ -1,0 +1,101 @@
+.wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content-wrapper {
+  background-color: rgba(168, 172, 175, 0.075);
+  position: relative;
+  width: 50%;
+  height: 50%;
+  border-radius: 15px;
+  transition: all linear 1.5s;
+}
+.name_tag {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #5271ff,
+    0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
+  animation: flicker 1s infinite alternate;
+}
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #5271ff,
+      0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
+  }
+
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+}
+.expanse {
+  width: 100%;
+  height: 100%;
+}
+.scale-down-center {
+  -webkit-animation: scale-down-center 1.5s infinite linear alternate;
+  animation: scale-down-center 1.5s infinite linear alternate;
+}
+@-webkit-keyframes scale-down-center {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0px 0px 100px 20px red;
+  }
+  100% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    box-shadow: 0px 0px 5px 0px red;
+  }
+}
+@keyframes scale-down-center {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0px 0px 100px 20px red;
+  }
+  100% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    box-shadow: 0px 0px 5px 0px red;
+  }
+}
+#hello_word {
+  height: 100%;
+  width: 100%;
+  stroke-dasharray: 6477;
+  stroke-dashoffset: 6477;
+  animation: writeHello 3s linear infinite;
+  -webkit-animation: 3s writeHello linear infinite;
+}
+@keyframes writeHello {
+  from {
+    stroke-dashoffset: 6477;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@-webkit-keyframes writeHello {
+  from {
+    -webkit-stroke-dashoffset: 6477;
+  }
+  to {
+    -webkit-stroke-dashoffset: 0;
+  }
+}
