@@ -1,3 +1,6 @@
+body {
+  cursor: pointer;
+}
 .wrapper {
   position: relative;
   width: 100vw;
@@ -9,7 +12,7 @@
   align-items: center;
 }
 .content-wrapper {
-  background-color: rgba(168, 172, 175, 0.075);
+  background-color: transparent;
   position: relative;
   width: 50%;
   height: 50%;
@@ -21,6 +24,17 @@
   bottom: 20px;
   right: 20px;
   color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #5271ff,
+    0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
+  animation: flicker 1s infinite alternate;
+}
+.guide{
+  position: absolute;
+  z-index: 9;
+  font-size: medium;
+  bottom: 20px;
+  right: 20px;
+  color: #12e3f1;
   text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #5271ff,
     0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
   animation: flicker 1s infinite alternate;
@@ -49,10 +63,9 @@
   opacity: 0;
 }
 .scale-down-center {
-  -webkit-animation: scale-down-center 1s infinite linear alternate;
-  animation: scale-down-center 1s infinite linear alternate;
+  opacity: 0;
 }
-@-webkit-keyframes scale-down-center {
+/* @-webkit-keyframes scale-down-center {
   0% {
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -75,7 +88,7 @@
     transform: scale(0.9);
     box-shadow: 0px 0px 5px 0px red;
   }
-}
+} */
 #hello_word {
   height: 100%;
   width: 100%;
@@ -101,7 +114,7 @@
   }
 }
 
-.img_happy{
+.img_happy {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -110,34 +123,34 @@
   height: 100%;
   z-index: -5;
   opacity: 0;
-  transition: all 0.5s linear;
+  transition: all 1.5s linear;
 }
-.img_happy .relative{
+.img_happy .relative {
   height: 750px;
   width: 1024px;
   position: relative;
 }
-.img_happy div{
+.img_happy div {
   object-fit: contain;
   position: absolute;
 }
-.f1{
-  background-image: url('./f1.jpg');
+.f1 {
+  background-image: url("./f1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
   width: 100%;
   z-index: 1;
 }
-.f2{
-  background-image: url('./f2.jpg');
+.f2 {
+  background-image: url("./f2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
   width: 0%;
   z-index: 2;
 }
-.wish_section{
+.wish_section {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -147,13 +160,12 @@
   background: transparent;
   z-index: -10;
   opacity: 0;
-  transition: all 0.5s linear;
+  transition: all 1.5s linear;
 }
-.show{
+.show {
   z-index: 9999;
   opacity: 1;
 }
-
 
 /* wish section  */
 .text_animation {
@@ -203,4 +215,96 @@
     filter: blur(100px);
     opacity: 0;
   }
+}
+
+/* heart */
+.section1 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.layoutHeart {
+  background: transparent;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -9999;
+}
+
+.heart_span {
+  position: absolute;
+  pointer-events: none;
+  animation: fadeInOut 1s linear infinite;
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+}
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+}
+.heart_span::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: url("./heart.png");
+  background-size: cover;
+  animation: moveHeart 1s linear infinite;
+}
+@keyframes moveHeart {
+  0% {
+    transform: translate(0) rotate(0deg);
+  }
+  100% {
+    transform: translate(200px) rotate(360deg);
+  }
+}
+
+.overLay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  color: wheat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  /* color: #ff3366; */
+  font-size: 10em;
+  /* text-shadow: 0 0 50px #ff0066, 0 0 100px #ff0066, 0 0 150px #ff0066,
+    0 0 200px #ff0066, 0 0 250px #ff0066; */
+  text-shadow: 0px 0px 50px #e9e8dac2, 0 0 100px #cae1d8, 0 0 150px #f37676,
+    0 0 200px #ff0000, 0px 0px 250px #ff0000;
+  transition: all 2s linear;
+  animation: heartBeat 1.5s linear infinite;
+}
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+    color: #f8507a;
+  }
+  50% {
+    transform: scale(1.3);
+    color: #ff3366;
+  }
+  70% {
+    transform: scale(1.2);
+    color: #ff3366;
+  }
+  100% {
+    transform: scale(1);
+    color: #f55d83;
+  }
+}
+.fullScreenHeart {
+  font-size: 3000px;
+  opacity: 0;
 }

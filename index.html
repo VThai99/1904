@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="styleBg.css" />
     <link rel="stylesheet" href="styleComp.css" />
     <link rel="stylesheet" href="resetCss.css" />
+    <script
+      src="https://kit.fontawesome.com/dd84336cc7.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="wrapper">
@@ -62,6 +66,10 @@
         <span></span>
         <span></span>
       </div>
+      <div class="section1">
+        <div class="layoutHeart"></div>
+        <div class="overLay"><i class="fa-solid fa-heart logo" id="hearttt"></i></div>
+      </div>
       <div
         class="content-wrapper"
         id="bumb"
@@ -111,7 +119,8 @@
           <div class="word"><i class="fas fa-heart"></i></div>
         </div>
       </div>
-      <div class="img_happy" id="imgSection">
+      <div class="img_happy show" id="imgSection">
+        <div class="guide">Di chuột trong bức ảnh nhé!</div>
         <div class="relative" id="section_img">
           <div class="f1"></div>
           <div class="f2" id="img_birthday"></div>
@@ -122,17 +131,19 @@
   <script>
     var count_move = 0;
     function mOver(obj) {
+      const hearttt_obj = document.getElementById("hearttt")
       var wish_section = document.getElementById("wishSection");
       var phase1 = document.getElementById("phase1");
       var img_section = document.getElementById("imgSection");
       if (count_move === 0) {
         obj.classList.add("scale-down-center");
+        hearttt_obj.classList.add('fullScreenHeart')
         setTimeout(() => {
           obj.classList.remove("scale-down-center");
           obj.classList.add("expanse");
           wish_section.classList.add("show");
           phase1.classList.add("text_animation");
-        }, 6000);
+        }, 2000);
         setTimeout(() => {
           wish_section.classList.remove("show");
           img_section.classList.add("show");
@@ -144,13 +155,33 @@
       count_move += 1;
     }
 
-    var sectionImg = document.getElementById('section_img')
-    sectionImg.onmousemove = change_img
-    function change_img(e){
-      var imgBirthday = document.getElementById("img_birthday")
-      var startPosition = sectionImg.offsetLeft
-      var currentPosition = e.clientX
-      imgBirthday.style.width = currentPosition - startPosition  + "px";
+    var sectionImg = document.getElementById("section_img");
+    sectionImg.onmousemove = change_img;
+    function change_img(e) {
+      var imgBirthday = document.getElementById("img_birthday");
+      var startPosition = sectionImg.offsetLeft;
+      var currentPosition = e.clientX;
+      imgBirthday.style.width = currentPosition - startPosition + "px";
     }
+
+    // pointer
+    document.addEventListener("mousemove", (e) => {
+      let heartLayout = document.querySelector(".wrapper");
+      let heart = document.createElement("span");
+      heart.classList.add('heart_span')
+      let x = e.offsetX;
+      let y = e.offsetY;
+      heart.style.left = x + "px";
+      heart.style.top = y + "px";
+      let size = Math.random() * 80;
+      heart.style.width = 20 + size + "px";
+      heart.style.height = 20 + size + "px";
+      let transformValue = Math.random() * 360;
+      heart.style.transform = "rotate(" + transformValue + "deg)";
+      heartLayout.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 1500);
+    });
   </script>
 </html>
