@@ -97,24 +97,60 @@
             </linearGradient>
           </defs>
         </svg>
-        <div class="name_tag">Abcds</div>
+        <div class="name_tag">Chạm vào đây đi Quéc Thảo</div>
+      </div>
+      <div class="wish_section" id="wishSection">
+        <div class="" id="phase1">
+          <div class="word">Hi, Thảo nhé <i class="fas fa-heart"></i></div>
+          <div class="word">Happy birthday nhaaaaa!</div>
+          <div class="word">Anh có đôi lời thế này</div>
+          <div class="word">
+            Chúc em thật xinh đẹp, rạng ngời và gặp thật nhiều may mắn
+          </div>
+          <div class="word">Đặc biệt là thật hạnh phúc nha ♥</div>
+          <div class="word"><i class="fas fa-heart"></i></div>
+        </div>
+      </div>
+      <div class="img_happy" id="imgSection">
+        <div class="relative" id="section_img">
+          <div class="f1"></div>
+          <div class="f2" id="img_birthday"></div>
+        </div>
       </div>
     </div>
   </body>
   <script>
     var count_move = 0;
     function mOver(obj) {
+      var wish_section = document.getElementById("wishSection");
+      var phase1 = document.getElementById("phase1");
+      var img_section = document.getElementById("imgSection");
       if (count_move === 0) {
         obj.classList.add("scale-down-center");
         setTimeout(() => {
           obj.classList.remove("scale-down-center");
           obj.classList.add("expanse");
-        }, 10000);
+          wish_section.classList.add("show");
+          phase1.classList.add("text_animation");
+        }, 6000);
+        setTimeout(() => {
+          wish_section.classList.remove("show");
+          img_section.classList.add("show");
+        }, 30000);
       }
     }
 
     function mOut(obj) {
       count_move += 1;
+    }
+
+    var sectionImg = document.getElementById('section_img')
+    sectionImg.onmousemove = change_img
+    function change_img(e){
+      var imgBirthday = document.getElementById("img_birthday")
+      var startPosition = sectionImg.offsetLeft
+      var currentPosition = e.clientX
+      imgBirthday.style.width = currentPosition - startPosition  + "px";
     }
   </script>
 </html>
